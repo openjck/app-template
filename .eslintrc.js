@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: "module",
@@ -25,6 +26,20 @@ module.exports = {
       rules: {
         "prettier/prettier": "error",
       },
+    },
+    {
+      files: ["**/*.ts"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ["./tsconfig.json"],
+      },
+      plugins: ["@typescript-eslint"],
+      extends: [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint",
+      ],
     },
     {
       files: ["**/*.svelte"],
